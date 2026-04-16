@@ -84,6 +84,7 @@ def run_benchmarks(min_size: int, max_size: int, factor: int, iterations: int):
 
 
 def get_args():
+    pass
     
 
 if __name__ == "__main__":

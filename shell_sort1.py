@@ -1,6 +1,7 @@
 def shell_sort1(nums:list[int], n: int):
     gap = n/2
     while gap > 0:
+        pass
         
 
 
