@@ -2,30 +2,26 @@ def insertion_sort(nums: list[int]):
     num_comparisons = 0
     for i in range(1, len(nums)):
         j = i
-        
-        # if nums[j] < nums[j-1]:
-        #     print(f"{nums[j]} is less than {nums[j-1]}")
-        #     while j > 0 and nums[j] < nums[j-1]:
-        #         num_comparisons += 1
-        #         temp = nums[j]
-        #         nums[j] = nums[j-1]
-        #         j -= 1
-        #         nums[j] = temp
-        #         print(f"array after swapping: {nums}")
-                
-        #     print("-"*15)
-        num_comparisons += 1
-        while j > 0 and nums[j] < nums[j-1]:
+
+        while j > 0:
             num_comparisons += 1
-            temp = nums[j]
-            nums[j] = nums[j-1]
-            j -= 1
+
+            if nums[j] < nums[j-1]:
+                temp = nums[j]
+                nums[j] = nums[j-1]
+                j -= 1
+            else:
+                break
+            
             nums[j] = temp
-            print(f"array after swapping: {nums}")
+            # print(f"array after swapping: {nums}")
         
-        print("-"*15)
+        # print("-"*15)
             
     return num_comparisons
+
+
+
 
 arr1 = [2, 15, 8, 1, 17, 10, 12, 5]
 arr2 = [3, 9, 6, 1, 2]
