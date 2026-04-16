@@ -1,2 +1,2 @@
-def tim_sort():
+def tim_sort(nums: list[int]):
     pass
