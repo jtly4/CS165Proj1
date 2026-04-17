@@ -43,4 +43,4 @@ def swap(nums:list[int], j: int, val: int):
     nums[j] = val
 
 arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
-print(shell_sort3(arr3))
+# print(shell_sort3(arr3))
