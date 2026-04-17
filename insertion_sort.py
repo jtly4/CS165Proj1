@@ -22,7 +22,7 @@ def insertion_sort(nums: list[int]):
 
 
 
-
+'''
 arr1 = [2, 15, 8, 1, 17, 10, 12, 5]
 arr2 = [3, 9, 6, 1, 2]
 arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
@@ -30,4 +30,4 @@ arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
 #print(insertion_sort(arr1))
 #print(insertion_sort(arr2))
 print(insertion_sort(arr3))
-
+'''
