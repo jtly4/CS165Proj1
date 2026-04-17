@@ -33,13 +33,13 @@ def shell_sort2(nums:list[int]):
                     break
 
             swap(nums, j, temp)    
-            print(nums)
-            print("-"*30)
+            # print(nums)
+            # print("-"*30)
     return num_comparisons
 
 def swap(nums:list[int], j: int, val: int):
     nums[j] = val
 
-arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
-print(shell_sort2(arr3))
+# arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
+# print(shell_sort2(arr3))
     
