@@ -1,4 +1,3 @@
-
 def shell_sort1(nums:list[int]):
     num_comparisons, k = 0, 1
     last_gap, gap = float('inf'), float('inf')
