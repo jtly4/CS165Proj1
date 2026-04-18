@@ -114,4 +114,4 @@ def run_decomp(nums: list[int]):
 
 arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
 
-print(tim_sort(arr3))
+# print(tim_sort(arr3))
