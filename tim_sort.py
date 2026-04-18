@@ -6,7 +6,7 @@ def tim_sort(nums: list[int]):
     while runs:
         stack.append(runs.pop(0))
 
-        while runs:
+        while True:
             h = len(stack)
             # setting up
             if h >= 1:
@@ -26,8 +26,10 @@ def tim_sort(nums: list[int]):
                 r4 = len(s4)
 
             # merging
-
-            if h > 3:
+            if h >= 4 and ((r2 + r3) >= r4):
+                merged_list, comparisons = merger(s2, s1)
+                stack[-2:] = [merged_list]
+            elif h >= 3:
                 if r1 > r3:
                     merged_list, comparisons = merger(s3, s2)
                     stack[-3:-1] = [merged_list]
@@ -37,17 +39,14 @@ def tim_sort(nums: list[int]):
             elif h > 2 and (r1 >= r2):
                 merged_list, comparisons = merger(s3, s2)
                 stack[-3:-1] = [merged_list]
-            elif h > 4 and ((r2 + r3) >= r4):
-                merged_list, comparisons = merger(s2, s1)
-                stack[-2:] = [merged_list]
             else:
                 break
             
             num_comparisons += comparisons
 
     while len(stack) > 1:
-        list1 = stack.pop()
         list2 = stack.pop()
+        list1 = stack.pop()
         merged_list, comparisons = merger(list1, list2)
         stack.append(merged_list)
         num_comparisons += comparisons
@@ -56,6 +55,8 @@ def tim_sort(nums: list[int]):
         nums[:] = stack[0]
     else:
         nums[:] = []
+
+    print(nums)
 
     return num_comparisons
 
@@ -110,3 +111,7 @@ def run_decomp(nums: list[int]):
                 i += 1
             runs.append(nums[begin:i][::-1])
     return runs
+
+arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
+
+print(tim_sort(arr3))
