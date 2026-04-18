@@ -26,19 +26,18 @@ def tim_sort(nums: list[int]):
                 r4 = len(s4)
 
             # merging
-            if h >= 4 and ((r2 + r3) >= r4):
-                merged_list, comparisons = merger(s2, s1)
-                stack[-2:] = [merged_list]
-            elif h >= 3:
-                if r1 > r3:
-                    merged_list, comparisons = merger(s3, s2)
-                    stack[-3:-1] = [merged_list]
-                elif (r1+r2) >= r3:
-                    merged_list, comparisons = merger(s2, s1)
-                    stack[-2:] = [merged_list]
-            elif h >= 2 and (r1 >= r2):
+            if h > 3 and r1 > r3:
                 merged_list, comparisons = merger(s3, s2)
                 stack[-3:-1] = [merged_list]
+            elif h > 2 and (r1 >= r2):
+                merged_list, comparisons = merger(s3, s2)
+                stack[-3:-1] = [merged_list]
+            elif h > 3 and (r1+r2) >= r3:
+                merged_list, comparisons = merger(s2, s1)
+                stack[-2:] = [merged_list]
+            elif h > 4 and ((r2 + r3) >= r4):
+                merged_list, comparisons = merger(s2, s1)
+                stack[-2:] = [merged_list]
             else:
                 break
             
