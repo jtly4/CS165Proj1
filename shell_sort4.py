@@ -15,7 +15,8 @@ def shell_sort4(nums:list[int]):
             gap = (2 ** p) * (3 ** q)
             if gap >= n:
                 break
-            gaps.append(gap)
+            if gap != last_gap:
+                gaps.append(gap)
             q += 1
         p += 1
 
