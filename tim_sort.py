@@ -44,9 +44,7 @@ def tim_sort(nums: list[int]):
             num_comparisons += comparisons
 
     while len(stack) > 1:
-        list2 = stack.pop()
-        list1 = stack.pop()
-        merged_list, comparisons = merger(list1, list2)
+        merged_list, comparisons = merger(stack[-2], stack[-1])
         stack[-2:] = [merged_list]
         num_comparisons += comparisons
 
@@ -55,7 +53,7 @@ def tim_sort(nums: list[int]):
     else:
         nums[:] = []
 
-    print(nums)
+    #print(nums)
 
     return num_comparisons
 
