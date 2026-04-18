@@ -5,7 +5,6 @@ def tim_sort(nums: list[int]):
 
     while runs:
         stack.append(runs.pop(0))
-        print(f"stack: {stack}, nums: {nums}")
 
         while runs:
             h = len(stack)
