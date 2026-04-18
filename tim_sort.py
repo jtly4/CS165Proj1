@@ -36,7 +36,7 @@ def tim_sort(nums: list[int]):
                 elif (r1+r2) >= r3:
                     merged_list, comparisons = merger(s2, s1)
                     stack[-2:] = [merged_list]
-            elif h > 2 and (r1 >= r2):
+            elif h >= 2 and (r1 >= r2):
                 merged_list, comparisons = merger(s3, s2)
                 stack[-3:-1] = [merged_list]
             else:
