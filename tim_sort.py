@@ -1,13 +1,15 @@
 def tim_sort(nums: list[int]):
-    num_comparisons, r1, r2, r3, r4 = 0, 0, 0, 0, 0
-    stack, s1, s2, s3, s4 = [], [], [], [], []
+    num_comparisons = 0
+    stack = []
     runs = run_decomp(nums)
 
-    while runs:
+    for run in runs:
         stack.append(runs.pop(0))
 
         while True:
             h = len(stack)
+            r1, r2, r3, r4 = 0, 0, 0, 0
+            s1, s2, s3, s4 =  [], [], [], []
             # setting up
             if h >= 1:
                 s1 = stack[-1]
@@ -32,7 +34,7 @@ def tim_sort(nums: list[int]):
             elif h > 2 and (r1 >= r2):
                 merged_list, comparisons = merger(s3, s2)
                 stack[-3:-1] = [merged_list]
-            elif h > 3 and (r1+r2) >= r3:
+            elif h > 3 and ((r1+r2) >= r3):
                 merged_list, comparisons = merger(s2, s1)
                 stack[-2:] = [merged_list]
             elif h > 4 and ((r2 + r3) >= r4):
@@ -66,13 +68,9 @@ def merger(list1: list[int], list2: list[int]):
         if list1[i] < list2[j]:
             merged_list.append(list1[i])
             i += 1
-        elif list2[j] < list1[i]:
+        else:
             merged_list.append(list2[j])
             j += 1
-        else:
-            merged_list.append(list1[i])
-            j += 1
-            i += 1
 
     if i < len(list1):
         merged_list.extend(list1[i:])
@@ -109,6 +107,32 @@ def run_decomp(nums: list[int]):
             runs.append(nums[begin:i][::-1])
     return runs
 
-arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
+'''def run_decomp(nums: list[int]) -> list[list[int]]:
+    runs = []
+    n = len(nums)
+    i = 0
 
-# print(tim_sort(arr3))
+    while i < n:
+        start = i
+
+        if i == n - 1:
+            runs.append([nums[i]])
+            break
+
+        ascending = nums[i] <= nums[i + 1]
+        i += 1
+
+        if ascending:
+            while i < n and nums[i - 1] <= nums[i]:
+                i += 1
+            runs.append(nums[start:i])
+        else:
+            while i < n and nums[i - 1] > nums[i]:
+                i += 1
+            runs.append(nums[start:i][::-1])
+
+    return runs
+    '''
+arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
+print(run_decomp(arr3))
+print(tim_sort(arr3))
