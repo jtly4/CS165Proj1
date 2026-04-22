@@ -18,8 +18,8 @@ SORTING_ALGORITHMS: dict[str, Callable[[list[int]], int]] = {
     "shell_sort2": requirements.shell_sort2,
     "shell_sort3": requirements.shell_sort3,
     "shell_sort4": requirements.shell_sort4,
-    "shell_sort5": requirements.shell_sort5,
-    "skip_list_sort": requirements.skip_list_sort,
+    "shell_sort5": requirements.shell_sort5
+    #"skip_list_sort": requirements.skip_list_sort,
 }
 
 
@@ -115,6 +115,7 @@ def run_benchmarks(sizes: list[int], iterations: int) -> None:
 
 def get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Benchmark sorting algorithms.")
+    parser.add_argument("--sizes", type=int, nargs="+", default=[10, 500, 2500, 5000, 32678, 131072])
     parser.add_argument("--iterations", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--clear", action="store_true")
@@ -128,7 +129,8 @@ def main() -> None:
     if args.clear:
         clear_existing_data()
 
-    sizes = [10, 500, 2500, 5000, 32678, 131072]
+    # sizes = [10, 500, 2500, 5000, 32678, 131072]
+    sizes = args.sizes  # replaces the hardcoded list
     run_benchmarks(sizes, args.iterations)
 
 

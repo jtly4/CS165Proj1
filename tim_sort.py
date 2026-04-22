@@ -1,4 +1,4 @@
-def tim_sort(nums: list[int]):
+'''def tim_sort(nums: list[int]):
     num_comparisons = 0
     stack = []
     runs = run_decomp(nums)
@@ -107,7 +107,7 @@ def run_decomp(nums: list[int]):
             runs.append(nums[begin:i][::-1])
     return runs
 
-'''def run_decomp(nums: list[int]) -> list[list[int]]:
+def run_decomp(nums: list[int]) -> list[list[int]]:
     runs = []
     n = len(nums)
     i = 0
@@ -133,6 +133,87 @@ def run_decomp(nums: list[int]):
 
     return runs
     '''
-arr3 = [5, 2, 4, 1, 3, 11, 9, 8, 7, 6, 0, 10]
-print(run_decomp(arr3))
-print(tim_sort(arr3))
+def run_decomposition(nums: list[int]) -> list[list[int]]:
+    runs = []
+    n = len(nums)
+    i = 0
+
+    while i < n:
+        start = i
+
+        if i == n - 1:
+            runs.append([nums[i]])
+            break
+
+        ascending = nums[i] <= nums[i + 1]
+        i += 1
+
+        if ascending:
+            while i < n and nums[i - 1] <= nums[i]:
+                i += 1
+            runs.append(nums[start:i])
+        else:
+            while i < n and nums[i - 1] > nums[i]:
+                i += 1
+            runs.append(nums[start:i][::-1])
+
+    return runs
+
+
+def merge_comp(left: list[int], right: list[int]) -> tuple[list[int], int]:
+    merged = []
+    i = j = comparisons = 0
+
+    while i < len(left) and j < len(right):
+        comparisons += 1
+        if left[i] <= right[j]:
+            merged.append(left[i])
+            i += 1
+        else:
+            merged.append(right[j])
+            j += 1
+
+    merged.extend(left[i:])
+    merged.extend(right[j:])
+    return merged, comparisons
+
+
+def tim_sort(nums: list[int]) -> int:
+    runs = run_decomposition(nums)
+    stack = []
+    num_comparisons = 0
+
+    while runs:
+        stack.append(runs.pop(0))
+
+        while True:
+            h = len(stack)
+            r1 = len(stack[-1]) if h >= 1 else 0
+            r2 = len(stack[-2]) if h >= 2 else 0
+            r3 = len(stack[-3]) if h >= 3 else 0
+            r4 = len(stack[-4]) if h >= 4 else 0
+
+            if h > 3 and r1 > r3:
+                merged, c = merge_comp(stack[-3], stack[-2])
+                stack[-3:-1] = [merged]
+            elif h > 2 and r1 >= r2:
+                merged, c = merge_comp(stack[-3], stack[-2])
+                stack[-3:-1] = [merged]
+            elif h > 3 and r1 + r2 >= r3:
+                merged, c = merge_comp(stack[-2], stack[-1])
+                stack[-2:] = [merged]
+            elif h > 4 and r2 + r3 >= r4:
+                merged, c = merge_comp(stack[-2], stack[-1])
+                stack[-2:] = [merged]
+            else:
+                break
+
+            num_comparisons += c
+
+    while len(stack) > 1:
+        merged, c = merge_comp(stack[-2], stack[-1])
+        stack[-2:] = [merged]
+        num_comparisons += c
+
+    nums[:] = stack[0] if stack else []
+    return num_comparisons
