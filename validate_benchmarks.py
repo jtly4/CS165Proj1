@@ -19,7 +19,7 @@ import pandas as pd
 # Configuration
 # ---------------------------------------------------------------------------
 
-BASE_DIR = os.path.join("CS165Proj1", "benchmark_data")
+BASE_DIR = os.path.join("benchmark_data")
 
 ALGORITHMS = [
     "insertion_sort",
