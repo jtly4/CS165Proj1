@@ -1,0 +1,47 @@
+============================================================
+Log-Log Benchmark Plotter
+============================================================
+
+[insertion_sort]
+  almost        slope = 1.1668  →  O(n^1.17)
+  alternating   slope = 1.9216  →  O(n^1.92)
+  uniform       slope = 1.9642  →  O(n^1.96)
+  Plots saved to: benchmark_data\insertion_sort\plots
+
+[shell_sort1]
+  almost        slope = 1.1047  →  O(n^1.10)
+  alternating   slope = 1.0998  →  O(n^1.10)
+  uniform       slope = 1.2760  →  O(n^1.28)
+  Plots saved to: benchmark_data\shell_sort1\plots
+
+[shell_sort2]
+  almost        slope = 1.0998  →  O(n^1.10)
+  alternating   slope = 1.1117  →  O(n^1.11)
+  uniform       slope = 1.1655  →  O(n^1.17)
+  Plots saved to: benchmark_data\shell_sort2\plots
+
+[shell_sort3]
+  almost        slope = 1.1066  →  O(n^1.11)
+  alternating   slope = 1.0980  →  O(n^1.10)
+  uniform       slope = 1.1494  →  O(n^1.15)
+  Plots saved to: benchmark_data\shell_sort3\plots
+
+[shell_sort4]
+  almost        slope = 1.2221  →  O(n^1.22)
+  alternating   slope = 1.2236  →  O(n^1.22)
+  uniform       slope = 1.2245  →  O(n^1.22)
+  Plots saved to: benchmark_data\shell_sort4\plots
+
+[shell_sort5]
+  almost        slope = 1.6854  →  O(n^1.69)
+  alternating   slope = 1.6968  →  O(n^1.70)
+  uniform       slope = 1.6711  →  O(n^1.67)
+  Plots saved to: benchmark_data\shell_sort5\plots
+
+[tim_sort]
+  almost        slope = 0.9809  →  O(n^0.98)
+  alternating   slope = 0.8868  →  O(n^0.89)
+  uniform       slope = 1.1471  →  O(n^1.15)
+  Plots saved to: benchmark_data\tim_sort\plots
+
+============================================================
